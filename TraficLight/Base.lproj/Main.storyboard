@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TraficLight" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="xBB-xw-mOY">
-                                <rect key="frame" x="94" y="194" width="240" height="484"/>
+                                <rect key="frame" x="87" y="194" width="240" height="484"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YfT-gH-8b4">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -44,11 +44,19 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="6l0-6f-fdn"/>
+                                    <constraint firstItem="dLp-Xk-KLy" firstAttribute="centerX" secondItem="xBB-xw-mOY" secondAttribute="centerX" id="CN5-t7-Zrg"/>
+                                    <constraint firstAttribute="height" constant="484" id="DjL-6a-n5U"/>
+                                    <constraint firstItem="YfT-gH-8b4" firstAttribute="centerX" secondItem="xBB-xw-mOY" secondAttribute="centerX" id="PCA-eg-oR9"/>
+                                    <constraint firstAttribute="width" secondItem="xBB-xw-mOY" secondAttribute="height" multiplier="60:121" id="RZJ-Jc-n7K"/>
+                                    <constraint firstItem="RNb-EY-tlB" firstAttribute="centerX" secondItem="xBB-xw-mOY" secondAttribute="centerX" id="ahb-lG-sGR"/>
+                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMv-ff-iQP">
-                                <rect key="frame" x="157" y="774" width="114" height="59"/>
+                                <rect key="frame" x="82" y="777.5" width="250" height="55.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="59" id="CBY-yG-aqV"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="9rk-W2-5nw"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled">
@@ -62,18 +70,21 @@
                                     </attributedString>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="actionButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="nKu-AY-ocE"/>
+                                    <action selector="toggleButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="DkR-8b-Idn"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="nMv-ff-iQP" firstAttribute="top" secondItem="xBB-xw-mOY" secondAttribute="bottom" constant="96" id="KPh-n4-9Nu"/>
-                            <constraint firstItem="nMv-ff-iQP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R5K-PR-Xua"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nMv-ff-iQP" secondAttribute="bottom" constant="59" id="dhW-hb-DMl"/>
-                            <constraint firstItem="nMv-ff-iQP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="157" id="qEg-UR-Mh8"/>
-                            <constraint firstItem="nMv-ff-iQP" firstAttribute="centerX" secondItem="xBB-xw-mOY" secondAttribute="centerX" id="wJp-0o-EhR"/>
+                            <constraint firstItem="xBB-xw-mOY" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="120:463" id="1dc-Wx-iCh"/>
+                            <constraint firstItem="xBB-xw-mOY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9PV-f4-zTv"/>
+                            <constraint firstItem="nMv-ff-iQP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JKz-c8-tLU"/>
+                            <constraint firstItem="nMv-ff-iQP" firstAttribute="top" secondItem="xBB-xw-mOY" secondAttribute="bottom" constant="99.329999999999998" id="QPP-Dj-576"/>
+                            <constraint firstItem="xBB-xw-mOY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="Qxh-Tt-mYA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nMv-ff-iQP" secondAttribute="bottom" constant="59" id="Rwj-6V-2Nd"/>
+                            <constraint firstItem="xBB-xw-mOY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="a4T-oU-C7U"/>
+                            <constraint firstItem="xBB-xw-mOY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ph7-mp-zjw"/>
                         </constraints>
                     </view>
                     <connections>

@@ -7,6 +7,10 @@
 
 import UIKit
 
+enum CurrentLight {
+    case red, yellow, green
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet var redView: UIView!
@@ -15,36 +19,51 @@ class ViewController: UIViewController {
     
     @IBOutlet var toggleButton: UIButton!
     
+    private var currentLight = CurrentLight.red
+    private let lightIsOn: CGFloat = 1
+    private let lightIsOff: CGFloat = 0.3
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        redView.backgroundColor = .red.withAlphaComponent(0.3)
-        yellowView.backgroundColor = .yellow.withAlphaComponent(0.3)
-        greenView.backgroundColor = .green.withAlphaComponent(0.3)
+        view.backgroundColor = .black
+        
+        toggleButton.layer.cornerRadius = 10
+        
+        redView.alpha = lightIsOff
+        yellowView.alpha = lightIsOff
+        greenView.alpha = lightIsOff
+        
+        
         
         // Do any additional setup after loading the view.
     }
     
-    
-    @IBAction func actionButton() {
-        if redView.backgroundColor == .red.withAlphaComponent(0.3) && yellowView.backgroundColor == .yellow.withAlphaComponent(0.3) && greenView.backgroundColor == .green.withAlphaComponent(0.3) || redView.backgroundColor == .red.withAlphaComponent(0.3) && yellowView.backgroundColor == .yellow.withAlphaComponent(0.3) && greenView.backgroundColor == .green {
-            redView.backgroundColor = .red
-            yellowView.backgroundColor = .yellow.withAlphaComponent(0.3)
-            greenView.backgroundColor = .green.withAlphaComponent(0.3)
-            toggleButton.setTitle("Next", for: .normal)
-        } else if yellowView.backgroundColor == .yellow.withAlphaComponent(0.3) && redView.backgroundColor == .red {
-            yellowView.backgroundColor = .yellow
-            redView.backgroundColor = .red.withAlphaComponent(0.3)
-            greenView.backgroundColor = .green.withAlphaComponent(0.3)
-            toggleButton.setTitle("Next", for: .normal)
-            
-        } else if greenView.backgroundColor == .green.withAlphaComponent(0.3) && yellowView.backgroundColor == .yellow {
-            greenView.backgroundColor = .green
-            redView.backgroundColor = .red.withAlphaComponent(0.3)
-            yellowView.backgroundColor = .yellow.withAlphaComponent(0.3)
-            toggleButton.setTitle("Next", for: .normal)
-        }
+    override func viewWillLayoutSubviews() {
+        redView.layer.cornerRadius = redView.frame.width / 2
+        yellowView.layer.cornerRadius = yellowView.frame.width / 2
+        greenView.layer.cornerRadius = greenView.frame.width / 2
     }
     
+    @IBAction func toggleButtonPressed(){
+        toggleButton.setTitle("Next", for: .normal)
+        
+        switch currentLight {
+        case .red:
+            greenView.alpha = lightIsOff
+            redView.alpha = lightIsOn
+            currentLight = .yellow
+        case .yellow:
+            redView.alpha = lightIsOff
+            yellowView.alpha = lightIsOn
+            currentLight = .green
+            
+        case .green:
+            yellowView.alpha = lightIsOff
+            greenView.alpha = lightIsOn
+            currentLight = .red
+        }
+    }
 }
 
